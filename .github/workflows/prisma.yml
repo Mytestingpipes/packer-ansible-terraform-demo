@@ -16,9 +16,9 @@ jobs:
           pcc_user: f4326d9a-b2fe-4aff-91b5-9b36d620e9dd
           pcc_pass: g6Q5pXRYhBtnVotl7ApukKvN/80=
           container_repository: docker.io/library/nginx
-          IMAGE_NAME: latest
+          container_tag: latest
           
       - name: Upload SARIF File
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: ${{ steps.scan.outputs.sarif_file }}
+          sarif_file: ${{ github.workspace }}/a.sarif
