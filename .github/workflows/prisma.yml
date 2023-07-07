@@ -17,7 +17,12 @@ jobs:
           pcc_pass: g6Q5pXRYhBtnVotl7ApukKvN/80=
           image_name: docker.io/library/nginx
           #container_tag: latest
-          
+      - name: Upload JSON File         
+        uses: actions/upload-artifact@v2        
+        with:           
+          name: results           
+          path: ${{ github.workspace }}/pcc_scan_results.sarif.json  
+        if: always()
           
       - name: Upload SARIF File
         uses: github/codeql-action/upload-sarif@v2
