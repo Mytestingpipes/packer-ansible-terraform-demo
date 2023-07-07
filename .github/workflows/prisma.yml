@@ -15,8 +15,7 @@ jobs:
           pcc_console_url: https://asia-south1.cloud.twistlock.com/india-1131963775
           pcc_user: f4326d9a-b2fe-4aff-91b5-9b36d620e9dd
           pcc_pass: g6Q5pXRYhBtnVotl7ApukKvN/80=
-          image_name: docker.io/library/nginx
-          #container_tag: latest
+          image_name: nginx:latest
       - name: Upload JSON File         
         uses: actions/upload-artifact@v2        
         with:           
