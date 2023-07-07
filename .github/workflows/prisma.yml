@@ -4,12 +4,28 @@ on:
     branches:
       - master
 jobs:
-  scan:
+  build-and-scan:
+    name: Build and scan image
     runs-on: ubuntu-latest
+    permissions:      
+     contents: read      
+     packages: write      
+     actions: write      
+     security-events: write
+
     steps:
-      - name: Checkout
+      - name: Check out the repository
         uses: actions/checkout@v2
-      - name: Prisma Cloud Container Image Scan
+
+      #- name: Build the image
+        #run: docker build -t $IMAGE_NAME .
+        
+      - name: Pull Docker Image        
+        run: |           
+          docker pull nginx:latest
+      - name: Prisma Cloud image scan
+         set +e
+        id: scan
         uses: PaloAltoNetworks/prisma-cloud-scan@v1
         with:
           pcc_console_url: https://asia-south1.cloud.twistlock.com/india-1131963775
